@@ -4,6 +4,7 @@ const { connectRedis } = require('./config/redis');
 const { imageQueue } = require('./queues/imageQueues');
 const connectDB=require('../src/config/db')
 const router=require('../src/routes/imageRoutes')
+const imageWorker = require('../workers/imageWorker');
 
 const app = express();
 const PORT = process.env.PORT || 3000;

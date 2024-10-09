@@ -23,8 +23,8 @@ exports.uploadCSV = async (req, res) => {
     });
 
     // Queue the processing task
-    await imageQueue.add('processImages', { requestID, products });
-
+    const job=await imageQueue.add('imageProcessingQueue', { requestID, products });
+    console.log('Job added to queue:', job.id);
     res.status(200).json({
       requestID,
       message: 'Processing started.',
